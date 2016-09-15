@@ -1,0 +1,4 @@
+package: github.com/irfn/grpc-pool
+import:
+- package: google.golang.org/grpc
+  version: ^1.0.1-GA
