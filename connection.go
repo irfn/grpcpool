@@ -6,6 +6,7 @@ import (
 
 type Connection interface {
 	Close() error
+	Get() *grpc.ClientConn
 }
 
 type GrpcConnection struct {
@@ -15,4 +16,8 @@ type GrpcConnection struct {
 
 func (self *GrpcConnection) Close() error {
 	return self.pool.put(self.GrpcConn)
+}
+
+func (self *GrpcConnection) Get() *grpc.ClientConn {
+	return self.GrpcConn
 }
