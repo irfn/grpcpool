@@ -1,9 +1,13 @@
 package grpcpool
 
-import "google.golang.org/grpc"
+import (
+	"sync"
+
+	"google.golang.org/grpc"
+)
 
 func newConnectionPool(activeCount int, dialFunc func() (*grpc.ClientConn, error)) (*ConnectionPool, error) {
-	pool := &ConnectionPool{}
+	pool := &ConnectionPool{mu: sync.Mutex{}}
 	for i := 0; i < activeCount; i++ {
 		client, error := dialFunc()
 		if error != nil {
