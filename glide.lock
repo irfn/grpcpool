@@ -1,12 +1,12 @@
-hash: 1ad3ee32f9dbb6c3f9cb3adb360141671ac3fc3bf00f66f922fc7b9f6f584c44
-updated: 2016-09-19T17:53:58.371239497+07:00
+hash: 156fc3b7fab5c154725d852f1ca469b8bd94aae8f2fcb5519cf7f0c1a05a499a
+updated: 2016-09-21T12:33:09.453365239+07:00
 imports:
 - name: github.com/golang/protobuf
   version: 1f49d83d9aa00e6ce4fc8258c71cc7786aec968a
   subpackages:
   - proto
 - name: golang.org/x/net
-  version: 71a035914f99bb58fe82eac0f1289f10963d876c
+  version: f4fe4abe3c785295ddf81c7f1823bcd3bad391b6
   subpackages:
   - context
   - http2
@@ -35,8 +35,6 @@ testImports:
   version: 792786c7400a136282c1664665ae0a8db921c6c2
   subpackages:
   - difflib
-- name: github.com/satori/go.uuid
-  version: 879c5887cd475cd7864858769793b2ceb0d44feb
 - name: github.com/stretchr/objx
   version: 1a9d0bb9f541897e62256577b352fdbc1fb4fd94
 - name: github.com/stretchr/testify
