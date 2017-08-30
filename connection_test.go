@@ -55,9 +55,9 @@ func TestShouldPutEvictConnectionFromPool(t *testing.T) {
 
 	grpcConnection := &GrpcConnection{pool: mockPool, GrpcConn: conn}
 	mockPool.On("put", grpcConnection.GrpcConn).Return(nil)
-	mockConnection.On("Close").Return(nil)
 
 	grpcConnection.Evict()
 
 	mockConnection.AssertExpectations(t)
+	mockConnection.AssertNotCalled(t, "Close")
 }
