@@ -29,6 +29,5 @@ func (self *GrpcConnection) Get() *grpc.ClientConn {
 }
 
 func (self *GrpcConnection) Evict() {
-	defer self.GrpcConn.Close()
-	self.Close()
+	self.GrpcConn.Close()
 }
