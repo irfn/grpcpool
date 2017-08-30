@@ -27,6 +27,19 @@ func TestShouldgetFirstIdleConnection(t *testing.T) {
 	assert.Equal(t, idleConn, conn)
 }
 
+func TestShouldDialNewConnection(t *testing.T) {
+	dialed := false
+	pool := ConnectionPool{
+		activeCount: 1,
+		dialFunc: func() (*grpc.ClientConn, error) {
+			dialed = true
+			return nil, nil
+		},
+	}
+	pool.get()
+	assert.True(t, dialed)
+}
+
 func TestShouldBlockIfNoConnectionsAreAvailable(t *testing.T) {
 	blockedChannel := make(chan Connection, 1)
 	go func() {
