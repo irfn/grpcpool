@@ -2,10 +2,16 @@ package grpcpool
 
 import (
 	"google.golang.org/grpc"
+	"io"
 )
 
+type Evictor interface {
+	Evict()
+}
+
 type Connection interface {
-	Close() error
+	io.Closer
+	Evictor
 	Get() *grpc.ClientConn
 }
 
@@ -20,4 +26,9 @@ func (self *GrpcConnection) Close() error {
 
 func (self *GrpcConnection) Get() *grpc.ClientConn {
 	return self.GrpcConn
+}
+
+func (self *GrpcConnection) Evict() {
+	defer self.GrpcConn.Close()
+	self.Close()
 }
